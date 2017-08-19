@@ -1,0 +1,26 @@
+{#
+  This file is part of the EmharSonataChildAdminBundle bundle.
+
+  (c) Emmanuel Harleaux
+
+  This source file is subject to the MIT license that is bundled
+  with this source code in the file LICENSE.
+#}
+
+<span class="inner-field-short-description">
+    {% if object and admin.hasRoute('edit') and admin.hasAccess('edit') %}
+        {% set params = {id: object.id} %}
+        {% if admin.isChild %}
+            {% set params = {id: admin.parent.subject.id, childId: object.id} %}
+        {% endif %}
+        <a href="{{ admin.generateUrl('edit', link_parameters|merge(params)) }}" target="_new">{{ description }}</a>
+    {% elseif object and admin.hasRoute('show') and admin.hasAccess('show') %}
+        {% set params = {id: object.id} %}
+        {% if admin.isChild %}
+            {% set params = {id: admin.parent.subject.id, childId: object.id} %}
+        {% endif %}
+        <a href="{{ admin.generateUrl('show', link_parameters|merge(params)) }}" target="_new">{{ description }}</a>
+    {% else %}
+        {{ description }}
+    {% endif %}
+</span>
