@@ -20,6 +20,6 @@
     }
   },
   "autoload": {
-    "psr-4": { "Emhar\\CqrsInfrastructureBundle\\": "" }
+    "psr-4": { "Emhar\\SonataChildAdminBundle\\": "" }
   }
 }
